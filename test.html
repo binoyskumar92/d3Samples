@@ -1,0 +1,78 @@
+<html>
+
+<head>
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+
+</head>
+
+<body>
+    <script>
+
+        //     var data=[1,2,3,4,5];
+
+        //     var scale=d3.scaleLinear()
+        //     .domain([1,5])
+        //     .range([0,200]);
+
+        //     var svg = d3.select('body').append('svg');
+        //     svg.attr('width', 250);
+        //     svg.attr('height', 250);
+
+        //    svg.selectAll('rect')
+        //    .data(data)
+        //    .enter()
+        //    .append('rect')
+        //    .attr('x',scale)
+        //    .attr('y',50)
+        //    .attr('width',25)
+        //    .attr('height',25);
+
+        var svg = d3.select('body').append('svg')
+            .attr('width', 250)
+            .attr('height', 250);
+
+        //data
+        var dataObj = [
+            { x: 100, y: 100,fill:'red' },
+            { x: 130, y: 120,fill:'green' },
+            { x: 80, y: 180,fill:'black' },
+            { x: 180, y: 80,fill:'yellow' },
+            { x: 180, y: 40,fill:'cyan' },
+        ];
+
+        var dataObjTwo = [
+            { x: 100, y: 100,fill:'brown' },
+            { x: 130, y: 120,fill:'cyan' },
+            { x: 80, y: 180,fill:'red' },
+            { x: 180, y: 80,fill:'green' },
+            { x: 180, y: 40,fill:'blue' },
+        ];
+
+        function render(data) {
+            //bind data
+            let circles = svg.selectAll('circle').data(data);
+
+                 //exit
+           // circles.exit().remove();
+
+            //enter
+            circles=circles.enter().append('circle')
+                .attr('r', 10);
+
+            //Update
+            circles
+                .attr('cx', function (d) { return d.x; })
+                .attr('cy', function (d) { return d.y; })
+                .attr('fill', function (d) { return d.fill; });
+
+       
+        }
+        render(dataObj);
+        svg.selectAll('circle').data(dataObj).remove();
+        render(dataObjTwo);
+
+    </script>
+
+</body>
+
+</html>

@@ -11,7 +11,7 @@
 <div class="chart-wrapper" id="chart-line1"></div>
 <script src="multiline.js" charset="utf-8"></script>
 <script type="text/javascript">
-    d3.csv('http://localhost:8888/multiline_data.csv', function(error, data) {
+    d3.json('http://localhost:8888/multiline_data.json', function(error, data) {
     data.forEach(function (d) {
         d.year = +d.year;
         d.variableA = +d.variableA;
